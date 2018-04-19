@@ -18,9 +18,13 @@ class VotingController extends Controller
     {
         $applicants = Applicant::all();
         
-        $winnerToday = Winner::where('created_at', 'like', date('Y-m-d')."%")->firstOrFail();
-        $winnersToday = Applicant::find($winnerToday);
+        $winnerToday = Winner::where('created_at', 'like', date('Y-m-d')."%")->get();
+        $winnersToday = array();
         
+        foreach($winnerToday as $winner){
+            
+            array_push($winnersToday, Applicant::find($winner->applicant_id));
+        }
         
         return view('voting.index', compact('applicants', 'winnersToday'));
     }

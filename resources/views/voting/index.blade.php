@@ -51,34 +51,36 @@
         @else
         <div class="col-md-8">
             @foreach($winnersToday as $winnerToday)
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="box box-widget widget-user-2">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header bg-yellow">
-                      <div class="widget-user-image">
-                        @if($winnerToday->photo_url == null)
-                        <img class="img-circle" src="/images/profile_default.jpg" alt="User Avatar">
-                        @else
-                        <img class="img-circle" src="{{ $winnerToday->photo_url }}" alt="User Avatar">
-                        @endif
-                      </div>
-                      <!-- /.widget-user-image -->
-                      <h3 class="widget-user-username">Vencedor de Hoje!</h3>
-                      <h5 class="widget-user-desc">{{ $winnerToday->name }}</h5>
-                    </div>
-                    <div class="box-footer no-padding">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="box box-widget widget-user-2">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-yellow">
+                          <div class="widget-user-image">
+                            @if($winnerToday->photo_url == null)
+                            <img class="img-circle" src="/images/profile_default.jpg" alt="User Avatar">
+                            @else
+                            <img class="img-circle" src="{{ $winnerToday->photo_url }}" alt="User Avatar">
+                            @endif
+                          </div>
+                          <!-- /.widget-user-image -->
+                          <h3 class="widget-user-username">Rei do dia!</h3>
+                          <h5 class="widget-user-desc">{{ $winnerToday->name }}</h5>
+                        </div>
+                        <div class="box-footer no-padding">
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-3"></div>
             </div>
-            <div class="col-md-3"></div>
             @endforeach
         </div>
         @endif
         <div class="col-md-4">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Ultímos Ganhadores</h3>
+                  <h3 class="box-title">Ultímos Reis</h3>
 
                   <div class="box-tools pull-right">
                     <!--<span class="label label-danger">Vencedores</span>-->
