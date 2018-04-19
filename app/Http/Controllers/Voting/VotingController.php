@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Vote;
 use App\Models\Applicant;
+use App\Models\Winner;
 use DB;
 
 
@@ -17,7 +18,11 @@ class VotingController extends Controller
     {
         $applicants = Applicant::all();
         
-        return view('voting.index', compact('applicants'));
+        $winnerToday = Winner::where('created_at', 'like', date('Y-m-d')."%")->firstOrFail();
+        $winnersToday = Applicant::find($winnerToday);
+        
+        
+        return view('voting.index', compact('applicants', 'winnersToday'));
     }
     
     public function vote($id){
