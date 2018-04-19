@@ -11,15 +11,11 @@ class Applicant extends Model
 {
     
     protected $fillable = ['name', 'email', 'photo_url'];
-    //
-    public function applicants()
-    {
-        return Applicant::all();
-    }
+    
     
     public function votes()
     {
-        return $this->hasMany(Vote::class);
+        return $this->hasOne(Vote::class);
     }
     
     public function victories()
@@ -35,6 +31,8 @@ class Applicant extends Model
                         'email' => $data['email'],
                         'photo_url' => $data['image']
                     ]);
+                    
+        $applicant->votes()->firstOrCreate([]);
         
         if($applicant)
             return [
@@ -63,5 +61,24 @@ class Applicant extends Model
             'success' => false,
             'message' => Lang::get('messages.user.delete.error')
         ];
+    }
+    
+    public function voted(){
+        
+        $vote = $this->votes()->firstOrCreate([]);
+        
+        $save = $vote->vote();
+        
+        if($save)
+            return [
+              'success' => true,
+              'message' => Lang::get('messages.vote.create.success')
+            ];
+        
+        return [
+            'success' => false,
+            'message' => Lnag::get('messages.vote.create.error')
+        ];
+        
     }
 }

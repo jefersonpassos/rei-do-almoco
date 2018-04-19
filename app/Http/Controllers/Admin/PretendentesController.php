@@ -11,13 +11,11 @@ use App\Models\Vote;
 class PretendentesController extends Controller
 {
     //
-    public function index(Applicant $applicant, Vote $votes)
+    public function index()
     {
-        $applicants = $applicant->applicants();
-        // dd($applicants[0]);
+        $applicants = Applicant::all();
         
-        
-        return view('admin.pretendentes.index', compact('applicants', 'votes'));
+        return view('admin.pretendentes.index', compact('applicants'));
     }
     
     public function register()

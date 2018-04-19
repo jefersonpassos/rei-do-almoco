@@ -17,7 +17,7 @@ class CreateWinnersTable extends Migration
             $table->increments('id');
             $table->dateTime('dateVitory');
             $table->integer('applicant_id')->unsigned();
-            $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
+            $table->foreign('applicant_id')->references('id')->on('applicants');
         });
     }
 

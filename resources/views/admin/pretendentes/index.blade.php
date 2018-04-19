@@ -28,7 +28,7 @@
         
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Votos</b> <a class="pull-right">{{ $applicant->votes()->count() }}</a>
+                                <b>Votos</b> <a class="pull-right">{{ $applicant->votes()->get()[0]['total_votes'] }}</a>
                             </li>
                             <li class="list-group-item">
                                 <b>Vitórias</b> <a class="pull-right">{{ $applicant->victories()->count() }}</a>

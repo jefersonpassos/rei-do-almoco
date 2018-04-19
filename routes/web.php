@@ -9,7 +9,13 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
     Route::get('pretendentes/{id}', 'PretendentesController@delete')->name('admin.applicant.delete');
 });
 
-Route::get('/', 'VotingController@index');
+Route::group(['namespace' => 'Voting'], function(){
+    
+    Route::get('/', 'VotingController@index')->name('voting.home');
+    Route::get('vote/{id}', 'VotingController@vote')->name('voting.vote');
+    
+});
+
 
 Auth::routes();
 
