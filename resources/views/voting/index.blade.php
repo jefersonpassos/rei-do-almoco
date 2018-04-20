@@ -17,7 +17,7 @@
     </div>
     
     <div class="content">
-        @if((int)date('H') >= 10 &&  (int)date('H') <= 11 )
+        @if((int)date('H') >= 10 && (int)date('H') <= 11 )
         <div class="col-md-8">
             @foreach($applicants as $applicant)
             <div class="col-md-4">
